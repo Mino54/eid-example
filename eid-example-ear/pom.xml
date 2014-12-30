@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+    <artifactId>eid-example</artifactId>
+    <groupId>be.fedict.eid.example</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+	<groupId>be.fedict.eid.example</groupId>
+	<artifactId>eid-example-ear</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>ear</packaging>
+
+	<name>Example EAR Package</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<jarModule>
+							<groupId>be.fedict.eid.example</groupId>
+							<artifactId>eid-example-jpa</artifactId>
+						</jarModule>
+						<ejbModule>
+							<groupId>be.fedict.eid.example</groupId>
+							<artifactId>eid-example-model-ejb</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>be.fedict.eid.example</groupId>
+							<artifactId>eid-example-admin-war</artifactId>
+							<contextRoot>/eid-example-admin</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>be.fedict.eid.example</groupId>
+			<artifactId>eid-example-jpa</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<classifier>${environment}</classifier>
+		</dependency>
+		<dependency>
+			<groupId>be.fedict.eid.example</groupId>
+			<artifactId>eid-example-model-ejb</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>ejb</type>
+			<classifier>${environment}</classifier>
+		</dependency>
+		<dependency>
+			<groupId>be.fedict.eid.example</groupId>
+			<artifactId>eid-example-model-ejb</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>ejb-client</type>
+			<scope>provided</scope>
+			<classifier>${environment}</classifier>
+		</dependency>
+		<dependency>
+			<groupId>be.fedict.eid.example</groupId>
+			<artifactId>eid-example-admin-war</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>war</type>
+			<classifier>${environment}</classifier>
+		</dependency>
+		<dependency>
+			<groupId>be.fedict.eid-applet</groupId>
+			<artifactId>eid-applet-service</artifactId>
+		</dependency>
+		<!-- The following dependencies are provided by the JavaEE runtime. -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

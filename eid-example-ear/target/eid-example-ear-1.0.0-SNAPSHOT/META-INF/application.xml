@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+  <display-name>eid-example-ear</display-name>
+  <module>
+    <ejb>eid-example-model-ejb-1.0.0-SNAPSHOT-development.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>eid-example-admin-war-1.0.0-SNAPSHOT-development.war</web-uri>
+      <context-root>/eid-example-admin</context-root>
+    </web>
+  </module>
+  <library-directory>lib</library-directory>
+</application>
