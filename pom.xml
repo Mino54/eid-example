@@ -64,6 +64,9 @@
               		<version>0.3.0</version>
               		<configuration>
                 		<appName>pacific-stream-4951</appName>
+                		<processTypes>
+     						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
+  						</processTypes>
               		</configuration>
             	</plugin>
 			</plugins>
